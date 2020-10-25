@@ -1,13 +1,18 @@
-## Version 0.0.1
+## Version 0.0.3
 ------------------------
 
-#### Changes
+#### Change
+###### v0.0.1
 
     - Initial Creation!
 
     - Username & Password Authentication works.
         
         - Added debug messages for now.
+
+###### v0.0.2/.3
+
+    - Bump Version & fix minor errors.
 
 
 #### How to Install
