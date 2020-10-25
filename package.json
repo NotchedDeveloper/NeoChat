@@ -1,10 +1,11 @@
 {
   "name": "neochat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An open source chat client.",
   "main": "index.js",
   "scripts": {
-    "test": "npm install && npm start"
+    "test": "npm install && npm start",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
