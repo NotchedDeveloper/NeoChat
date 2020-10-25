@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoChat</title>
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="/home/style.css">
+</head>
+<body>
+    
+    <h1 class="text-center" style="margin-top: 150px;">NeoChat</h1>
+    <h5 class="text-center">An open source chat client that <a href="#">anyone</a> can host!</h5>
+    <br><br><br>
+    <div class="text-center">
+        <% if(!req.user) { %>
+        <a href="/login" type="button" class="btn btn-primary btn-custom">Login</a>
+        <a href="/register" type="button" class="btn btn-secondary btn-custom">Register</a>
+        <% } else { %> 
+        Welcome <%= req.user.username %>! 
+        <br>
+        <a href="/chatrooms" type="button" class="btn btn-primary btn-custom">Continue</a>
+        <a href="/auth/leave" type="button" class="btn btn-danger btn-custom">Sign out</a>
+        <% } %>
+    </div>
+    <br><br><br>
+    <div class="text-center" id="info"></div>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js/"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var socket = io();
+        setInterval(function() { $("#info").not(".loaded").trigger("load").addClass("loaded")}, 100)
+        $('#info').on('load', () => {
+            $('#info').text(`Socket ID: ${socket.id}`) 
+        })
+
+
+    </script>
+</body>
+</html>

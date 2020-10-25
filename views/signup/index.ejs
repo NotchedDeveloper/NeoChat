@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoChat</title>
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="/signup/style.css">
+</head>
+<body>
+    
+    <h1 class="text-center" style="margin-top: 100px;">NeoChat</h1>
+    <h5 class="text-center">An open source chat client that <a href="#">anyone</a> can host!</h5>
+    <br>
+    <div class="text-center">
+        Already have an account? <a href="/login" type="button" class="btn btn-primary btn-custom">Login</a>.
+    </div>
+    <br>
+    <form action="/auth/register" class="container p-3 bg-dark text-white" style="border-radius: 5px;" method="post">
+        <div class="form-group">
+            <h3>Register</h3>
+        </div>
+        
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" required>
+            <div class="text-primary text-helper font-weight-bold" aria-labelledby="password">
+                Your password is hashed before being saved to our database locally.
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-primary btn-custom">
+        </div>
+    </form>
+    <br>
+    <div class="text-center" id="info"></div>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js/"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var socket = io();
+        setInterval(function() { $("#info").not(".loaded").trigger("load").addClass("loaded")}, 100)
+        $('#info').on('load', () => {
+            $('#info').text(`Socket ID: ${socket.id}`) 
+        })
+
+
+    </script>
+</body>
+</html>
