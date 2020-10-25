@@ -1,4 +1,4 @@
-## Version 0.0.3
+## Version 0.0.4
 ------------------------
 
 #### Change
@@ -13,6 +13,10 @@
 ###### v0.0.2/.3
 
     - Bump Version & fix minor errors.
+
+###### v0.0.4
+
+    - Add 2 new paths & update license
 
 
 #### How to Install

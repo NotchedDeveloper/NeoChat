@@ -58,7 +58,7 @@ app.get('/login', (req, res) => {
 
 /* [post] /auth/login */
 app.post('/auth/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true, failWithError: true }), (req, res) => {
-  return res.redirect('/chatrooms')
+  return res.redirect('/frontdoor')
 })
 
 /* [post] /auth/register */
@@ -71,6 +71,17 @@ app.post('/auth/register', async (req, res) => {
   }
   console.log(user)
   return res.redirect('/login?msg=Your account has been created successfully!&type=info')
+})
+
+/* /auth/signout */
+app.get('/auth/leave', async (req, res) => {
+  req.session.destroy()
+  return res.redirect('back')
+})
+
+/* /frontdoor */
+app.get('/frontdoor', async (req, res) => {
+  return res.send('Soon:tm:')
 })
 
 /* Manage Socket Events */
